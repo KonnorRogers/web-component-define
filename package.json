@@ -1,0 +1,41 @@
+{
+  "name": "web-component-define",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "types/index.d.ts",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./src/index.js",
+      "types": "./types/index.d.ts"
+    }
+  },
+  "files": [
+    "types",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "web-components"
+  ],
+  "license": "MIT",
+  "repository": "git@github.com:KonnorRogers/web-component-define.git",
+  "bugs": {
+    "url": "https://github.com/KonnorRogers/web-component-define/issues"
+  },
+  "homepage": "https://github.com/KonnorRogers/web-component-define",
+  "author": "KonnorRogers <konnor5456@gmail.com>",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}

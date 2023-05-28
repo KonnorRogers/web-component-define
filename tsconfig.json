@@ -1,0 +1,16 @@
+{
+  "include": [
+    "src/**/*.js",
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ESNext", "DOM"],
+    "declaration": true,
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true,
+    "allowJs": true
+  }
+}
