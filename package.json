@@ -1,6 +1,6 @@
 {
   "name": "web-component-define",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "src/index.js",
   "module": "src/index.js",
   "types": "types/index.d.ts",
