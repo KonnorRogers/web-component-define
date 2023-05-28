@@ -25,7 +25,7 @@
 
 /**
  * Extends any extension of HTMLElement to call `.define()` as well as register children.
- * @template {GenericConstructable<HTMLElement>} [TBase=GenericConstructable<HTMLElement>]
+ * @template {Constructable} TBase
  * @param {TBase} superclass
  * @example
  *   // usage with LitElement
@@ -65,8 +65,10 @@ export function Defineable(superclass) {
     * @param {null | undefined | CustomElementConstructor} [ctor=this]
     * @param {ElementDefinitionOptions | undefined} [options]
     */
-    static define(name = this.baseName, ctor = this, options) {
+    static define(name, ctor, options) {
       if (!name) name = this.baseName;
+
+      /** @ts-expect-error */
       if (!ctor) ctor = this;
 
       const alreadyExists = Boolean(this.customElementRegistry.get(name))
@@ -75,7 +77,7 @@ export function Defineable(superclass) {
         console.warn(`${name} has already been registered.`)
       }
 
-      if (!alreadyExists) {
+      if (!alreadyExists && ctor) {
         this.customElementRegistry.define(name, class extends ctor {}, options);
       }
 
