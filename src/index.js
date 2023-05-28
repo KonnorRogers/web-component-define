@@ -43,7 +43,7 @@
  *   import { DefineableElement } from "<tbd>"
  *   export class BaseElement extends DefineableElement {}
  */
-function Defineable(superclass) {
+export function Defineable(superclass) {
   return class Defineable extends superclass {
     /** @type {CustomElementRegistry} */
     static customElementRegistry = window.customElements;
