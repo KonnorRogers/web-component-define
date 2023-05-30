@@ -37,6 +37,7 @@
   "scripts": {
     "build": "tsc",
     "prepublish": "npm run build",
+    "deploy": "npm run prepublish && npm publish",
     "test": "web-test-runner",
     "types:copy": "copyfiles \"./src/**/*.d.ts\" \"./*.d.ts\" types"
   },
