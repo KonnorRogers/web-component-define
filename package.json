@@ -1,31 +1,31 @@
 {
   "name": "web-component-define",
   "version": "2.0.3",
-  "main": "src/exports/index.js",
-  "module": "src/exports/index.js",
-  "types": "types/exports/index.d.ts",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "types/index.d.ts",
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": "./src/exports/index.js",
-      "types": "./types/exports/index.d.ts"
+      "import": "./src/index.js",
+      "types": "./types/index.d.ts"
     },
     "./exports/define.js": {
-      "import": "./src/exports/define.js",
-      "types": "./types/exports/define.d.ts"
+      "import": "./src/define.js",
+      "types": "./types/define.d.ts"
     },
     "./exports/lit.js": {
-      "import": "./src/exports/lit.js",
-      "types": "./types/exports/lit.d.ts"
+      "import": "./src/lit.js",
+      "types": "./types/lit.d.ts"
     },
     "./exports/scoped-elements.js": {
-      "import": "./src/exports/scoped-elements.js",
-      "types": "./types/exports/scoped-elements.d.ts"
+      "import": "./src/scoped-elements.js",
+      "types": "./types/scoped-elements.d.ts"
     },
     "./exports/render-root.js": {
-      "import": "./src/exports/render-root.js",
-      "types": "./types/exports/render-root.d.ts"
+      "import": "./src/render-root.js",
+      "types": "./types/render-root.d.ts"
     }
   },
   "files": [
@@ -36,11 +36,12 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "rm -rf types/ exports/ && tsc && npm run copy && cp -R exports/{src,types}/* exports/. && rm -rf exports/{types,src} && cp -R exports/exports/* exports/. && rm -rf exports/exports",
+    "build": "rm -rf exports/ types/ && tsc && npm run copy",
     "prepublish": "npm run build",
     "deploy": "npm run build && npm publish",
     "test": "web-test-runner",
-    "copy": "copyfiles \"./src/**/*.*\" \"./types/**/*.d.ts\" exports"
+    "cp": "cp 'src/**/*.d.ts' types",
+    "copy": "mkdir -p ./exports && cp -R ./src/* ./types/* ./exports"
   },
   "keywords": [
     "web-components"
