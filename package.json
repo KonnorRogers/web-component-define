@@ -1,9 +1,9 @@
 {
   "name": "web-component-define",
   "version": "2.0.2",
-  "main": "src/index.js",
-  "module": "src/index.js",
-  "types": "types/index.d.ts",
+  "main": "src/exports/index.js",
+  "module": "src/exports/index.js",
+  "types": "types/exports/index.d.ts",
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
@@ -15,15 +15,15 @@
       "import": "./src/exports/define.js",
       "types": "./types/exports/define.d.ts"
     },
-    "./lit": {
+    "./lit.js": {
       "import": "./src/exports/lit.js",
       "types": "./types/exports/lit.d.ts"
     },
-    "./scoped-elements": {
+    "./scoped-elements.js": {
       "import": "./src/exports/scoped-elements.js",
       "types": "./types/exports/scoped-elements.d.ts"
     },
-    "./render-root": {
+    "./render-root.js": {
       "import": "./src/exports/render-root.js",
       "types": "./types/exports/render-root.d.ts"
     }
