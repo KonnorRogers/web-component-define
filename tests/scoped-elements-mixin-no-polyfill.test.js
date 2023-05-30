@@ -2,7 +2,7 @@ import { assert, fixture, defineCE } from '@open-wc/testing';
 import { LitElement, html } from 'lit';
 import { runScopedElementsMixinSuite } from './run-scoped-elements-mixin-suite.js';
 
-import { ScopedElementsMixin } from '../src/exports/scoped-elements.js';
+import { LitScopedElementsMixin as ScopedElementsMixin } from '../src/lit.js';
 
 runScopedElementsMixinSuite({
   label: 'ScopedElementsMixin features NOT needing a real scope [no polyfill loaded]',

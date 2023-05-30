@@ -1,4 +1,4 @@
-import { DefineableMixin, DefineableElement } from "../src/exports/define.js"
+import { DefineableMixin, DefineableElement } from "../src/define.js"
 import { assert } from "@open-wc/testing"
 
 import { LitElement } from "lit"

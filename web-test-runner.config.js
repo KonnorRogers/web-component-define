@@ -7,7 +7,7 @@ export default {
   rootDir: ".",
   nodeResolve: true,
   watch: process.argv.includes("--watch"),
-  // esbuildTarget: "auto",
+  esbuildTarget: "auto",
   files: [
     "src/**/*.test.js",
     "tests/**/*.test.js"

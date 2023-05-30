@@ -4,7 +4,7 @@ import { until } from 'lit/directives/until.js';
 
 import '@webcomponents/scoped-custom-element-registry';
 
-import { ScopedElementsMixin } from '../src/exports/scoped-elements.js';
+import { LitScopedElementsMixin as ScopedElementsMixin } from '../src/lit.js';
 import { runScopedElementsMixinSuite } from './run-scoped-elements-mixin-suite.js';
 
 runScopedElementsMixinSuite({

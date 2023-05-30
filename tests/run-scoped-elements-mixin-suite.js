@@ -2,7 +2,7 @@ import { fixture, defineCE, waitUntil, assert, expect } from '@open-wc/testing';
 import { LitElement, html, css } from 'lit';
 import { until } from 'lit/directives/until.js';
 
-import { LitScopedElementsMixin as ScopedElementsMixin } from '../src/exports/lit.js';
+import { LitScopedElementsMixin as ScopedElementsMixin } from '../src/lit.js';
 
 export function runScopedElementsMixinSuite({ label }) {
   class FeatureA extends LitElement {
@@ -81,7 +81,7 @@ export function runScopedElementsMixinSuite({ label }) {
       );
       const el = await fixture(`<${tagString}></${tagString}>`);
       assert.instanceOf(el.shadowRoot.children[0], FeatureA);
-      expect(el.shadowRoot.children[0]).to.have.an.attribute('foo', 'bar');
+      assert.equal(el.shadowRoot.children[0].getAttribute('foo'), 'bar');
       assert.instanceOf(el.shadowRoot.children[1], FeatureB);
     });
 
@@ -149,13 +149,13 @@ export function runScopedElementsMixinSuite({ label }) {
 
       const el = await fixture(`<${tag}></${tag}>`);
 
-      expect(el.shadowRoot.children[0]).to.be.an.instanceOf(FeatureA);
-      expect(el.shadowRoot.children[1]).to.not.be.an.instanceOf(FeatureLazyB);
-      expect(el.shadowRoot.children[2]).to.not.undefined;
+      assert.instanceOf(el.shadowRoot.children[0], FeatureA);
+      assert.notInstanceOf(el.shadowRoot.children[1], FeatureLazyB);
+      assert.isOk(el.shadowRoot.children[2]);
 
       el.defineScopedElement('feature-lazy-b', FeatureLazyB);
 
-      expect(el.shadowRoot.children[1]).to.be.an.instanceOf(FeatureLazyB);
+      assert.instanceOf(el.shadowRoot.children[1], FeatureLazyB);
     });
 
     test('supports inheritance with added scoped elements', async () => {
@@ -195,9 +195,9 @@ export function runScopedElementsMixinSuite({ label }) {
       const elFoo = await fixture(`<${foo}></${foo}>`);
       const elBar = await fixture(`<${bar}></${bar}>`);
 
-      expect(elFoo.shadowRoot.children[0]).to.be.an.instanceOf(Lorem);
-      expect(elBar.shadowRoot.children[0]).to.be.an.instanceOf(Lorem);
-      expect(elBar.shadowRoot.children[1]).to.be.an.instanceOf(Ipsum);
+      assert.instanceOf(elFoo.shadowRoot.children[0], Lorem);
+      assert.instanceOf(elBar.shadowRoot.children[0], Lorem);
+      assert.instanceOf(elBar.shadowRoot.children[1], Ipsum);
     });
 
     test('should avoid definition if lazy is already defined', async () => {
@@ -212,11 +212,11 @@ export function runScopedElementsMixinSuite({ label }) {
 
       const el = await fixture(`<${tag}></${tag}>`);
 
-      expect(el.shadowRoot.children[0]).to.not.be.an.instanceOf(FeatureLazyA);
+      assert.notInstanceOf(el.shadowRoot.children[0], FeatureLazyA);
 
       el.defineScopedElement('feature-lazy-a', FeatureLazyA);
 
-      expect(el.shadowRoot.children[0]).to.be.an.instanceOf(FeatureLazyA);
+      assert.instanceOf(el.shadowRoot.children[0], FeatureLazyA);
 
       el.defineScopedElement('feature-lazy-a', FeatureLazyA);
     });
@@ -332,8 +332,8 @@ export function runScopedElementsMixinSuite({ label }) {
       const el = await fixture(`<${tag}></${tag}>`);
       const firstElement = el.shadowRoot.children[0];
 
-      expect(firstElement.tagName.toLowerCase()).to.be.equal('item-a');
-      expect(firstElement).to.be.instanceof(ItemA);
+      assert.equal(firstElement.tagName.toLowerCase(), 'item-a');
+      assert.instanceOf(firstElement, ItemA);
     });
 
     test('should adjust the `renderBefore` for shimmed adoptedStyleSheets', async () => {
@@ -362,12 +362,13 @@ export function runScopedElementsMixinSuite({ label }) {
 
       const el = await fixture(`<${tag}></${tag}>`);
 
-      expect(
+      assert.equal(
         getComputedStyle(el.shadowRoot.querySelector('p')).getPropertyValue('color'),
-      ).to.be.equal('rgb(0, 0, 255)');
+        'rgb(0, 0, 255)'
+      );
     });
 
-    test('directives integration', () => {
+    suite('directives integration', () => {
       test('should work with until(...)', async () => {
         const content = new Promise(resolve => {
           setTimeout(() => resolve(html` <feature-a id="feat"></feature-a> `), 0);
@@ -389,12 +390,12 @@ export function runScopedElementsMixinSuite({ label }) {
 
         const el = await fixture(`<${tag}></${tag}>`);
 
-        expect(el.shadowRoot.getElementById('feat')).to.be.null;
+        assert.isNull(el.shadowRoot.getElementById('feat'));
 
         await waitUntil(() => el.shadowRoot.getElementById('feat') !== null);
         const feature = el.shadowRoot.getElementById('feat');
 
-        expect(feature).shadowDom.to.equal('<div>Element A</div>');
+        assert.equal(html`${feature.shadowRoot.innerHTML}`.toString(), html`<div>Element A</div>`.toString());
       });
     });
   });
