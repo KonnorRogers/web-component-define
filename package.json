@@ -11,19 +11,19 @@
       "import": "./src/exports/index.js",
       "types": "./types/exports/index.d.ts"
     },
-    "./define": {
+    "./exports/define.js": {
       "import": "./src/exports/define.js",
       "types": "./types/exports/define.d.ts"
     },
-    "./lit.js": {
+    "./exports/lit.js": {
       "import": "./src/exports/lit.js",
       "types": "./types/exports/lit.d.ts"
     },
-    "./scoped-elements.js": {
+    "./exports/scoped-elements.js": {
       "import": "./src/exports/scoped-elements.js",
       "types": "./types/exports/scoped-elements.d.ts"
     },
-    "./render-root.js": {
+    "./exports/render-root.js": {
       "import": "./src/exports/render-root.js",
       "types": "./types/exports/render-root.d.ts"
     }
@@ -31,15 +31,16 @@
   "files": [
     "types",
     "src",
+    "exports",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "build": "rm -rf types && tsc",
+    "build": "rm -rf types/ exports/ && tsc && npm run copy && cp -R exports/{src,types}/* exports/. && rm -rf exports/{types,src} && cp -R exports/exports/* exports/. && rm -rf exports/exports",
     "prepublish": "npm run build",
     "deploy": "npm run build && npm publish",
     "test": "web-test-runner",
-    "types:copy": "copyfiles \"./src/**/*.d.ts\" \"./*.d.ts\" types"
+    "copy": "copyfiles \"./src/**/*.*\" \"./types/**/*.d.ts\" exports"
   },
   "keywords": [
     "web-components"
