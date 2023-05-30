@@ -6,6 +6,7 @@
   "compilerOptions": {
     "strict": true,
     "target": "ESNext",
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "lib": ["ESNext", "DOM"],
     "declaration": true,

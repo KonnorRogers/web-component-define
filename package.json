@@ -8,8 +8,24 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": "./src/index.js",
-      "types": "./types/index.d.ts"
+      "import": "./src/exports/index.js",
+      "types": "./types/exports/index.d.ts"
+    },
+    "./define": {
+      "import": "./src/exports/define.js",
+      "types": "./types/exports/define.d.ts"
+    },
+    "./lit": {
+      "import": "./src/exports/lit.js",
+      "types": "./types/exports/lit.d.ts"
+    },
+    "./scoped-elements": {
+      "import": "./src/exports/scoped-elements.js",
+      "types": "./types/exports/scoped-elements.d.ts"
+    },
+    "./render-root": {
+      "import": "./src/exports/render-root.js",
+      "types": "./types/exports/render-root.d.ts"
     }
   },
   "files": [
@@ -20,7 +36,10 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "deploy": "npm run prepublish && npm publish",
+    "test": "web-test-runner",
+    "types:copy": "copyfiles \"./src/**/*.d.ts\" \"./*.d.ts\" types"
   },
   "keywords": [
     "web-components"
@@ -36,6 +55,18 @@
     "access": "public"
   },
   "devDependencies": {
+    "@open-wc/testing": "^3.1.8",
+    "@types/mocha": "^10.0.1",
+    "@web/test-runner": "^0.16.1",
+    "@web/test-runner-playwright": "^0.10.0",
+    "@webcomponents/scoped-custom-element-registry": "^0.0.9",
+    "copyfiles": "^2.4.1",
+    "lit": "^2.7.4",
+    "playwright": "^1.34.3",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@lit/reactive-element": "^1.6.1",
+    "@open-wc/dedupe-mixin": "^1.3.1"
   }
 }

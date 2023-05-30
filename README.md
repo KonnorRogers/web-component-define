@@ -17,9 +17,6 @@ import { DefineableElement } from "web-component-define"
 
 class MyCard extends DefineableElement {
   static baseName = "my-card"
-  static childComponents = {
-     header: { baseName: "my-header", class: MyHeader, options: {}}
-  }
 }
 
 // Register the class
@@ -36,8 +33,9 @@ MyCard.define(null, null, { extends: { "div" }})
 
 ```js
 import { LitElement } from "lit"
-import { Defineable } from "web-component-define"
-export class BaseElement extends Defineable(LitElement) {}
+import { DefineableMixin } from "web-component-define"
+
+export class BaseElement extends DefineableMixin(LitElement) {}
 
 class MyCard extends BaseElement {
   static baseName = "my-card"
@@ -53,9 +51,33 @@ import { DefineableElement } from "web-component-define"
 
 class MyCard extends DefineableElement {
   static baseName = "my-card"
-  static childComponents = {
-     header: { baseName: "my-header", class: MyHeader, options: {}}
-  }
   static warnOnExistingElement = true
 }
 ```
+
+## Scoped Elements Mixin
+
+### With regular element
+
+```js
+import { CreateRenderRootMixin, ScopedElementsMixin } from "web-component-define"
+export class BaseElement extends DefineableMixin(CreateRenderRootMixin(ScopedElementsMixin(HTMLElement))) {
+  static get scopedElements () {
+    return {
+      "my-header": MyHeader
+    }
+  }
+}
+
+BaseElement.define()
+```
+
+For more on defined scope elements, check out this page: <https://open-wc.org/docs/development/scoped-elements/>
+
+### With Lit
+
+```js
+import { LitScopedElementsMixin } from "web-component-define/lit"
+export class BaseElement extends ScopedElementsMixin(HTMLElement) {}
+```
+
