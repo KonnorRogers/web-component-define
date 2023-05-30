@@ -1,3 +1,7 @@
+### 2.0.4
+
+- I can't figure out types 🫠
+
 ### 2.0.1
 
 - fix: bad types on publish
