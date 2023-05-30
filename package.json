@@ -34,8 +34,7 @@
     "exports",
     "README.md",
     "LICENSE",
-    "**/*.d.ts",
-    "**/*.js"
+    "types.d.ts"
   ],
   "scripts": {
     "build": "rm -rf exports/ types/ && tsc && npm run copy",
