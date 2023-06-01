@@ -2,7 +2,7 @@
 
 /**
  * Extends any extension of HTMLElement to call `.define()` as well as register children.
- * @template {import("../../types").Constructor<HTMLElement>} T
+ * @template {import("../../types.js").Constructor<HTMLElement>} T
  * @param {T} superclass
  * @example
  *   // usage with LitElement

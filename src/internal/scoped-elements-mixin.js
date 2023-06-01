@@ -2,15 +2,15 @@
 import { dedupeMixin } from '@open-wc/dedupe-mixin';
 
 /**
- * @typedef {import('../../types').RenderOptions} RenderOptions
- * @typedef {import('../../types').ScopedElementsMap} ScopedElementsMap
+ * @typedef {import('../../types.js').RenderOptions} RenderOptions
+ * @typedef {import('../../types.js').ScopedElementsMap} ScopedElementsMap
  */
 
 // @ts-ignore
 const supportsScopedRegistry = !!ShadowRoot.prototype.createElement;
 
 /**
- * @template {import('../../types').Constructor<HTMLElement>} T
+ * @template {import('../../types.js').Constructor<HTMLElement>} T
  * @param {T} superclass
  */
 const ScopedElementsMixinImplementation = superclass =>

@@ -4,7 +4,7 @@ import { dedupeMixin } from '@open-wc/dedupe-mixin';
 /**
  * Extends any extension of HTMLElement to call `.createRenderRoot()` on registration to work with
  *   scoped elements mixin
- * @template {import('../../types').Constructor<HTMLElement>} T
+ * @template {import('../../types.js').Constructor<HTMLElement>} T
  * @param {T} superclass
  */
 const CreateRenderRootMixinImplementation = superclass => {

@@ -7,7 +7,7 @@
     "strict": true,
     "target": "ESNext",
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "lib": ["ESNext", "DOM"],
     "declaration": true,
     "declarationDir": "./types",

@@ -1,16 +1,16 @@
 // @ts-check
 import { dedupeMixin } from '@open-wc/dedupe-mixin';
-import { ScopedElementsMixin } from './scoped-elements-mixin';
+import { ScopedElementsMixin } from './scoped-elements-mixin.js';
 import { adoptStyles } from '@lit/reactive-element';
 
 /**
- * @typedef {import('../../types').RenderOptions} RenderOptions
+ * @typedef {import('../../types.js').RenderOptions} RenderOptions
  * @typedef {import('@lit/reactive-element').ReactiveElement} ReactiveElement;
  * @typedef {import('@lit/reactive-element').CSSResultOrNative} CSSResultOrNative
  */
 
 /**
- * @template {import('../../types').Constructor<ReactiveElement>} T
+ * @template {import('../../types.js').Constructor<ReactiveElement>} T
  * @param {T} superclass
  */
 const LitScopedElementsMixinImplementation = superclass => {
