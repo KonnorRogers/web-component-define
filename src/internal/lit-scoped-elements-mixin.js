@@ -5,12 +5,14 @@ import { adoptStyles } from '@lit/reactive-element';
 
 /**
  * @typedef {import('../../types.js').RenderOptions} RenderOptions
- * @typedef {import('@lit/reactive-element').ReactiveElement} ReactiveElement;
  * @typedef {import('@lit/reactive-element').CSSResultOrNative} CSSResultOrNative
  */
 
 /**
- * @template {import('../../types.js').Constructor<ReactiveElement>} T
+ * @template {import('../../types.js').Constructor<HTMLElement & {
+  elementStyles: CSSResultOrNative[]
+  renderOptions: RenderOptions
+ }>} T
  * @param {T} superclass
  */
 const LitScopedElementsMixinImplementation = superclass => {
