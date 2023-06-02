@@ -9,10 +9,7 @@ import { adoptStyles } from '@lit/reactive-element';
  */
 
 /**
- * @template {import('../../types.js').Constructor<HTMLElement & {
-  elementStyles: CSSResultOrNative[]
-  renderOptions: RenderOptions
- }>} T
+ * @template {import('../../types.js').Constructor} T
  * @param {T} superclass
  */
 const LitScopedElementsMixinImplementation = superclass => {

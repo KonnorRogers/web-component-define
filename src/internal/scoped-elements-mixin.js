@@ -10,7 +10,7 @@ import { dedupeMixin } from '@open-wc/dedupe-mixin';
 const supportsScopedRegistry = !!ShadowRoot.prototype.createElement;
 
 /**
- * @template {import('../../types.js').Constructor<HTMLElement>} T
+ * @template {import('../../types.js').Constructor} T
  * @param {T} superclass
  */
 const ScopedElementsMixinImplementation = superclass =>
