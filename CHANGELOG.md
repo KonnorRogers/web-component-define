@@ -1,3 +1,7 @@
+### 2.0.8
+
+- remove restriction of HTMLElement.
+
 ### 2.0.4
 
 - I can't figure out types 🫠
