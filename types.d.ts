@@ -1,7 +1,7 @@
 export type Constructor<T = any> = {new (...args: any[]): T}
 
-export type ScopedElementsMap = {
-  [key: string]: typeof HTMLElement;
+export type ScopedElementsMap<T = any> = {
+  [key: string]: Constructor<T>;
 };
 
 export interface RenderOptions {
