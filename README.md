@@ -77,7 +77,7 @@ For more on defined scope elements, check out this page: <https://open-wc.org/do
 ### With Lit
 
 ```js
-import { LitScopedElementsMixin } from "web-component-define/lit.js"
+import { LitScopedElementsMixin } from "web-component-define/exports/lit.js"
 export class BaseElement extends LitScopedElementsMixin(LitElement) {}
 ```
 
