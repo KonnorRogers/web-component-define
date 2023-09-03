@@ -1,3 +1,7 @@
+### 2.0.9
+
+- Re-add HTMLElement restriction, but keep it tiny.
+
 ### 2.0.8
 
 - remove restriction of HTMLElement.
