@@ -39,7 +39,9 @@ const CreateRenderRootMixinImplementation = superclass => {
     }
 
     connectedCallback () {
+      // @ts-expect-error
       if (typeof super.connectedCallback === "function") {
+        // @ts-expect-error
         super.connectedCallback()
       }
 

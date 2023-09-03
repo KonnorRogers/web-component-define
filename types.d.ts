@@ -1,6 +1,6 @@
-export type Constructor<T = any> = {new (...args: any[]): T}
+export type Constructor<T extends HTMLElement = HTMLElement> = {new (...args: any[]): T}
 
-export type ScopedElementsMap<T = any> = {
+export type ScopedElementsMap<T extends HTMLElement = HTMLElement> = {
   [key: string]: Constructor<T>;
 };
 
